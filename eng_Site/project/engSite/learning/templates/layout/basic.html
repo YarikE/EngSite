@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENG_LEARN</title>
+    <link rel="stylesheet" href="{% static 'engSite/main.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
+
+    <!--  HTMX GRAP AND DROP  -->
+    <script src="https://unpkg.com/htmx.org@1.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+    <!-- AXIOS -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+
+<!-- HTMX drag and drop -->
+    <script>
+            htmx.onLoad(function(content) {
+            var sortables = content.querySelectorAll(".learning");
+            for (var i = 0; i < sortables.length; i++) {
+                var sortable = sortables[i];
+            new Sortable(sortable, {
+                animation: 150,
+                ghostClass: 'blue-background-class'
+            });
+                console.log(content)
+            }})
+    </script>
+
+    <header class="header">
+        <div class="section__header">
+            <a class="section__a__header" href="{% url 'main' %}">Главная</a>
+            <a class="section__a__header" href="{% url 'learn' %}">Обучение</a>
+            <a class="section__a__header" href="{% url 'about' %}">О нас</a>
+            <a class="section__a__header" href="{% url 'registration' %}">Вход | Регистрация</a>
+        </div>
+    </header>
+
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
+
+    <!--  подгрузка контента (слов) из БД  -->
+    <script src="{% static 'engSite/words_gen.js' %}"></script>
+</body>
+
+</html>

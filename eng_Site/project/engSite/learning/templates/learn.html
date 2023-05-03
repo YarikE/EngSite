@@ -1,0 +1,25 @@
+{% extends "layout/basic.html" %}
+
+{% block content %}
+    <div class="learning"></div>
+
+    <div class="translate"></div>
+
+    <button class="res__button" id="res">
+        <div class="res__button__text">ГОТОВО</div>
+    </button>
+
+    <div class="good_modal" id="good_model">
+        <div class="good__modal__box">
+            <div>Вы выполнили задание правильно ! :)</div>
+            <a href="{% url 'next-learn' %}"><button class="next-learn">Next >>></button></a>
+        </div>
+    </div>
+
+    <div class="bad_modal" id="bad_model">
+        <div class="bad__modal__box">
+            <div>Вы выполнили задание неправильно ! :(</div>
+            <a href="{% url 'next-learn' %}"><button class="next-learn">Next >>></button></a>
+        </div>
+    </div>
+{% endblock %}
